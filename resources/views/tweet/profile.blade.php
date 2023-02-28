@@ -27,9 +27,7 @@
                 @csrf    
                 <input type="submit" value="アカウント削除">
             </form>
-        <form id="withdrawal-form" action="{{ route('user.withdrawal') }}" method="post" style="display: none;">
-            {{ csrf_field() }}
-        </form>
+        
 
 
     <a href="{{ route('tweet.index') }}"><戻る</a>

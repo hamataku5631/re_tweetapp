@@ -20,7 +20,7 @@
         @csrf
             <label for="tweet-content">プロフィール </label>
             <span>何か書いてね！</span>
-            <textarea id="tweet-content" type="text" name="tweet" placeholder="何か書いてね！">{{ $tweet->content }}</textarea>
+            <textarea id="tweet-content" type="text" name="tweet" placeholder="何か書いてね！">{{ $details->details}}</textarea>
             @error('tweet')
             <p style="color: red;">{{ $message }}</p>
             @enderror

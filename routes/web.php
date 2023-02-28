@@ -63,6 +63,7 @@ Route::get('/tweet/profile/edit',\App\Http\Controllers\Tweet\ProfileEditControll
 Route::get('/tweet/profileController',\App\Http\Controllers\Tweet\ProfileController::class
 )->name('tweet.profile.controller');
 
+
 Route::post('/user', 'UsersController@withdrawal')->name('user.withdrawal');
 
 Route::get('/dashboard', function () {
