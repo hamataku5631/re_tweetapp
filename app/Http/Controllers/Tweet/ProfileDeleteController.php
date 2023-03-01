@@ -23,14 +23,17 @@ class ProfileDeleteController extends Controller
         $user_id = Auth::id();
         echo $user_id;
         $Images= Image::select('name')->get();
+        echo $Images;
         $tweetService = new TweetService();// <-TweetService.php
         
         $tweets = $tweetService->getTweets();
+        var_dump ($tweets);
         User::find($user_id)->delete();
-        return view('tweet.index')
-        ->with(['user_id'=>$user_id,
-            "tweets" => $tweets,
-            "images" => $Images]);
+        // return view('tweet.index')
+        // ->with(['user_id'=>$user_id,
+        //     "tweets" => $tweets,
+        //     "images" => $Images])
+        ;
         
         
     }

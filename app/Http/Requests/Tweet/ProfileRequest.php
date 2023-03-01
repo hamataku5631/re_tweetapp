@@ -5,7 +5,7 @@ namespace App\Http\Requests\Tweet;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\UploadedFile;
 
-class CreateRequest extends FormRequest
+class ProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,9 +32,9 @@ class CreateRequest extends FormRequest
         return $this->user()->id;
     }
     
-    public function tweet(): string
+    public function edit(): string
     {
-        return $this->input('details');
+        return $this->input('edit');
     }
     
     

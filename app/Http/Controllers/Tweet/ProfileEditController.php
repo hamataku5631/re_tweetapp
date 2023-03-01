@@ -27,13 +27,12 @@ class ProfileEditController extends Controller
         $user_id = Auth::id();
         $user_name = Auth::user();
         var_dump($user_id);
-        $details = Profile::where('user_id',$user_id)->firstOrFail();
+        $details = User::where('id',$user_id)->firstOrFail();
         echo $details->details;
-        //$details->details = Profile::select("select 'details' ");
-        echo $details->details;
-        $details->save();
+        
         
         return view('tweet.edit')
+        
         ->with([
             "user_id" => $user_id,
             "user_name" => $user_name,

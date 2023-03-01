@@ -28,7 +28,7 @@ class ProfileController extends Controller
         echo "dd";
         $user_email = Auth::user()->email;
         echo $user_email;
-        $details = Profile::select('details')->where('user_id',$user_id)->first();
+        $details = User::select('details')->where('id',$user_id)->first();
 
         echo ($details);
         

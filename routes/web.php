@@ -60,8 +60,8 @@ Route::get('/tweet/profile',\App\Http\Controllers\Tweet\ProfileController::class
 Route::get('/tweet/profile/edit',\App\Http\Controllers\Tweet\ProfileEditController::class
 )->name('tweet.profile.edit');
 
-Route::get('/tweet/profileController',\App\Http\Controllers\Tweet\ProfileController::class
-)->name('tweet.profile.controller');
+Route::put('/tweet/profile/edited',\App\Http\Controllers\Tweet\PutProfileController::class
+)->name('tweet.profile.edited');
 
 
 Route::post('/user', 'UsersController@withdrawal')->name('user.withdrawal');
