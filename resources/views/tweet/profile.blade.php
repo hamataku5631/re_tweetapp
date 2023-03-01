@@ -10,28 +10,22 @@
 </head>
 <body>
     <h1>プロフィール</h1>
-    ユーザーID<br>  
-    {{ $user_id }}<br>
-    ユーザーNAME<br>
+    <li>ユーザーID</li> 
+    {{ $user_id }}</li>
+    <li>ユーザーNAME</li>
     {{ $user_name }}<br>
-    ユーザーEMAIL<br>  
+    <li>ユーザーEMAIL</li>
     {{ $user_email }}<br>
-    ユーザーPROFILE<br>
-    {{ $details }}
-    
+    <li>ユーザーPROFILE</li>
+    {{ $details->details }}
     <form action="{{ route('tweet.profile.edit') }}" method="get">
         @csrf    
-        <input type="submit" value="profile編集"><br>
-    </from>
-    <form action="{{ route('tweet.logout') }}" method="POST">
+        <input type="submit" value="PROFILE編集"><br>
+    </form>
+    <form action="{{ route('tweet.softdelete') }}" method="get">
                 @csrf    
                 <input type="submit" value="アカウント削除">
-            </form>
-        <form id="withdrawal-form" action="{{ route('user.withdrawal') }}" method="post" style="display: none;">
-            {{ csrf_field() }}
-        </form>
-
-
+    </form>
     <a href="{{ route('tweet.index') }}"><戻る</a>
    
     

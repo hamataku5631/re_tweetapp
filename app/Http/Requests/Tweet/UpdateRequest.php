@@ -37,4 +37,9 @@ class UpdateRequest extends FormRequest
     {
         return $this->user()->id;
     }
+    public function edit(): string
+    {
+        return $this->input('edit');
+    }
+
 }
