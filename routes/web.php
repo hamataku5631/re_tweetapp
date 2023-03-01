@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,51 +17,6 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-
-//sample
-Route::get('/sample', [\App\Http\Controllers\Sample\IndexController::class,'show']
-);
-
-Route::get('/sample/{id}', [\App\Http\Controllers\Sample\IndexController::class,'showId']
-);
-
-
-//tweet関連
-Route::get('/tweet', \App\Http\Controllers\Tweet\IndexController::class
-)->name('tweet.index');
-Route::get('/tweet/softdelete', \App\Http\Controllers\Tweet\ProfileDeleteController::class
-)->name('tweet.softdelete');
-
-Route::middleware('auth')->group(function () {
-Route::post('/tweet/create', \App\Http\Controllers\Tweet\CreateController::class
-)->name('tweet.create');
-
-Route::get('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\IndexController::class
-)->name('tweet.update.index')->where('tweetId','[0-9]+');
-
-Route::put('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\PutController::class
-)->name('tweet.update.put')->where('tweetId','[0-9]+');
-
-Route::delete('/tweet/delete/{tweetId}', \App\Http\Controllers\Tweet\DeleteController::class
-)->name('tweet.delete');
-});
-
-//ログイン関連
-Route::get('login', 'login@');
-Route::get('/logout', \App\Http\Controllers\Auth\LogoutController::class
-)->name('tweet.logout');
-
-//profile関連
-Route::get('/tweet/profile',\App\Http\Controllers\Tweet\ProfileController::class
-)->name('tweet.profile');
-
-Route::get('/tweet/profile/edit',\App\Http\Controllers\Tweet\ProfileEditController::class
-)->name('tweet.profile.edit');
-
-Route::get('/tweet/profileController',\App\Http\Controllers\Tweet\ProfileController::class
-)->name('tweet.profile.controller');
-
-Route::post('/user', 'UsersController@withdrawal')->name('user.withdrawal');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
