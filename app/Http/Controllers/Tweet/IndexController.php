@@ -22,6 +22,7 @@ class IndexController extends Controller
         $tweetService = new TweetService();// <-TweetService.php
         
         $tweets = $tweetService->getTweets(); //つぶやきの一覧を取得
+        
         return view('tweet.index')
         ->with([
             "tweets" => $tweets,

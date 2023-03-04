@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Tweet;
 
 class User extends Authenticatable
 {
@@ -25,7 +26,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -46,7 +47,7 @@ class User extends Authenticatable
     ];
     public function tweets()
     {
-        return $this->belongsToMany(Tweet::class);
+        return $this->hasMany(Tweet::class);
     }
     public function profile()
     {

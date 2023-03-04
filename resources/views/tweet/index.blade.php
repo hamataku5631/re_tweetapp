@@ -45,9 +45,13 @@
     <div>
         @foreach($tweets as $tweet)
         <details>
-            <summary>{{ $tweet->content }} by  最終投稿日時 {{$tweet->updated_at}} 
-            
-             <?php //echo $images ?> 
+            <summary>{{ $tweet->content }} by {{ $tweet->user_id }}最終投稿日時 {{$tweet->updated_at}} 
+                いいね数{{ $tweet->good }}
+                <form action="{{ route('tweet.good') }}" method="GET">
+                    @csrf
+                    <input type="submit" value="GOOD!">
+                </form>
+                <?php //echo $images ?> 
             <img src="storage/images/" width="30" height="30">
             </summary>
             @if(\Illuminate\Support\Facades\Auth::id() === $tweet->user_id)

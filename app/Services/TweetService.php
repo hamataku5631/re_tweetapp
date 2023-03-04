@@ -1,9 +1,10 @@
 <?php
 namespace App\Services;
 
-use App\Models\Tweet;
 use App\Models\Image;
 use App\Models\ImageTweet;
+use App\Models\Tweet;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,7 @@ class TweetService
     {   
         //image get
         $nameFromimage=Image::select('name')->get();
-
+            
         return Tweet::orderBy('id','DESC')->get();
     }
     //自分のtweetかどうかをチェックするメソッド
