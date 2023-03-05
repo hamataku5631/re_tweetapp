@@ -37,17 +37,20 @@ Route::middleware('auth')->group(function () {
 Route::post('/tweet/create', \App\Http\Controllers\Tweet\CreateController::class
 )->name('tweet.create');
 
+//tweet編集
 Route::get('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\IndexController::class
 )->name('tweet.update.index')->where('tweetId','[0-9]+');
 
 Route::put('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\PutController::class
 )->name('tweet.update.put')->where('tweetId','[0-9]+');
-
+//tweet削除
 Route::delete('/tweet/delete', \App\Http\Controllers\Tweet\DeleteController::class
 )->name('tweet.delete');
+//good機能
+Route::get('/tweet/good/{tweetId}', \App\Http\Controllers\Tweet\GoodController::class
+)->name('tweet.good')->where('tweetId','[0-9]+');
+//bad機能
 
-Route::get('/tweet/good', \App\Http\Controllers\Tweet\GoodController::class
-)->name('tweet.good');
 });
 
 //ログイン関連

@@ -47,7 +47,11 @@
         <details>
             <summary>{{ $tweet->content }} by {{ $tweet->user_id }}最終投稿日時 {{$tweet->updated_at}} 
                 いいね数{{ $tweet->good }}
-                <form action="{{ route('tweet.good') }}" method="GET">
+                <form action="{{ route('tweet.good',['tweetId' => $tweet->id]) }}" method="GET">
+                    @csrf
+                    <input type="submit" value="GOOD!">
+                </form>
+                <form action="{{ route('tweet.bad',['tweetId' => $tweet->id]) }}" method="GET">
                     @csrf
                     <input type="submit" value="GOOD!">
                 </form>
@@ -56,7 +60,7 @@
             </summary>
             @if(\Illuminate\Support\Facades\Auth::id() === $tweet->user_id)
             <div>
-                <a href="{{ route('tweet.update.index',['tweetId' => $tweet->id])}}">編集</a>
+                <a href="{{ route('tweet.update.index',['tweetId' => $tweet->id]) }}">編集</a>
                 <form action="{{ route('tweet.delete',['tweetId' => $tweet->id]) }}" method="post">
                             @method('DELETE')
                             @csrf

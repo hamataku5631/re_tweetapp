@@ -16,11 +16,10 @@ class GoodController extends Controller
      */
     public function __invoke(Request $request,TweetService $tweetService)
     {   
-        //echo ;
         $tweetId = (int) $request->route('tweetId');
-        var_dump( $tweetId );
-        Tweet::increment('good');
-        // return redirect()
-        // ->route('tweet.index');
+        echo $tweetId;
+        $tweet = Tweet::where('id',$tweetId)->increment('good');
+        return redirect()
+        ->route('tweet.index');
     }
 }
