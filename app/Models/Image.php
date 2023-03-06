@@ -14,4 +14,8 @@ class Image extends Model
         return $this->belongsToMany(Tweet::class);
        
     }
+    public function imagetweet()
+    {
+        return $this->belongsToMany(Image::class);
+    }
 }

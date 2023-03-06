@@ -20,6 +20,10 @@ class Tweet extends Model
     {
         return $this->belongsToMany(Image::class);
     }
+    public function imagetweet()
+    {
+        return $this->belongsToMany(Image::class);
+    }
     
     
 }

@@ -17,7 +17,7 @@ class TweetService
         //image get
         $nameFromimage=Image::select('name')->get();
         
-        return Tweet::with('user')->get();
+        return Tweet::orderBy('id','desc')->with('user')->get();
     }
     //自分のtweetかどうかをチェックするメソッド
     public function checkOwnTweet(int $userId, int $tweetId ): bool

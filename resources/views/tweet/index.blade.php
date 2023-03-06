@@ -45,7 +45,7 @@
     <div>
         @foreach($tweets as $tweet)
         <details>
-            <summary>{{ $tweet->content }} by {{ $tweet->user_id }}最終投稿日時 {{$tweet->updated_at}} 
+            <summary>{{ $tweet->images }} by {{ $tweet->user_id }}最終投稿日時 {{$tweet->updated_at}} 
                 いいね数{{ $tweet->good }}
                     <form action="{{ route('tweet.good',['tweetId' => $tweet->id]) }}" method="GET">
                         @csrf
@@ -56,9 +56,9 @@
                         <input type="submit" value="BAD!">
                     </form>
                 <?php 
-                    // $ImageId = App\Models\ImageTweet::select('image_id')->where('tweet_id',$tweet->id)->get();
-                    // $Images= App\Models\Image::select('name')->where('id',$ImageId)->get();
-                    // echo $imageId; 
+                    $ImageId = App\Models\ImageTweet::select('image_id')->where('tweet_id',$tweet->id)->get();
+                    $Images= App\Models\Image::select('name')->where('id',$ImageId)->get();
+                    echo $imageId; 
                     ?> 
                     <img src="storage/images/" width="30" height="30">
             </summary>
