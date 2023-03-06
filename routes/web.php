@@ -50,7 +50,8 @@ Route::delete('/tweet/delete', \App\Http\Controllers\Tweet\DeleteController::cla
 Route::get('/tweet/good/{tweetId}', \App\Http\Controllers\Tweet\GoodController::class
 )->name('tweet.good')->where('tweetId','[0-9]+');
 //bad機能
-
+Route::get('/tweet/bad/{tweetId}', \App\Http\Controllers\Tweet\BadController::class
+)->name('tweet.bad')->where('tweetId','[0-9]+');
 });
 
 //ログイン関連

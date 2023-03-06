@@ -20,13 +20,13 @@ class IndexController extends Controller
     {   
         $Images= Image::select('name')->get();
         $tweetService = new TweetService();// <-TweetService.php
-        
         $tweets = $tweetService->getTweets(); //つぶやきの一覧を取得
-        
+        // $tweets = Tweet::with('user')->get();
         return view('tweet.index')
         ->with([
-            "tweets" => $tweets,
-            "images" => $Images,
-        ]);
+            "tweets" => $tweets
+            
+        ])
+        ;
     }
 }

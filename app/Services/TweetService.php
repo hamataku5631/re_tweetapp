@@ -16,8 +16,8 @@ class TweetService
     {   
         //image get
         $nameFromimage=Image::select('name')->get();
-            
-        return Tweet::orderBy('id','DESC')->get();
+        
+        return Tweet::with('user')->get();
     }
     //自分のtweetかどうかをチェックするメソッド
     public function checkOwnTweet(int $userId, int $tweetId ): bool
@@ -28,20 +28,7 @@ class TweetService
         }
         return $tweet->user_id === $userId;   
     }
-    // public function saveTweet(int $userId,string $content,array $images)
-    // {   
-    //     DB::transaction(function () use ($userId,$content,$images) {
-    //         // $tweet = new Tweet;
-    //         // $tweet->user_id = $userId;
-    //         // $tweet->content = $content;
-    //         // $tweet->save();
-    //         //Storage::putFile('public/images',$images);
-    //         // $imageModel  = new Tweet;
-    //         // $imageModel->name =$image->hashNmae();
-    //         //$images->save();
-    //         // $imageModel->images()->attach($imageModel->id);
-    //     });
-    // }
+    
 }
 
 
