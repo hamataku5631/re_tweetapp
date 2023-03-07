@@ -45,21 +45,16 @@
     <div>
         @foreach($tweets as $tweet)
         <details>
-            <summary>{{ $tweet->images }} by {{ $tweet->user_id }}最終投稿日時 {{$tweet->updated_at}} 
-                いいね数{{ $tweet->good }}
-                    <form action="{{ route('tweet.good',['tweetId' => $tweet->id]) }}" method="GET">
+            <summary><?php echo $tweet['content']?>  by  echo $tweet['updated_at'] ?>最終投稿日時 <?php echo $tweet['updated_at']?>
+                いいね数
+                    <form action="{{ route('tweet.good',['tweetId' => $tweet['tweet_id']] )}}" method="GET">
                         @csrf
                         <input type="submit" value="GOOD!">
                     </form>
-                    <form action="{{ route('tweet.bad',['tweetId' => $tweet->id]) }}" method="GET">
+                    <form action="{{ route('tweet.bad',['tweetId' => $tweet['tweet_id']]) }}" method="GET">
                         @csrf
                         <input type="submit" value="BAD!">
                     </form>
-                <?php 
-                    $ImageId = App\Models\ImageTweet::select('image_id')->where('tweet_id',$tweet->id)->get();
-                    $Images= App\Models\Image::select('name')->where('id',$ImageId)->get();
-                    echo $imageId; 
-                    ?> 
                     <img src="storage/images/" width="30" height="30">
             </summary>
             @if(\Illuminate\Support\Facades\Auth::id() === $tweet->user_id)
