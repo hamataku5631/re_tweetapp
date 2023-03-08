@@ -44,8 +44,8 @@ Route::get('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\IndexCo
 Route::put('/tweet/update/{tweetId}', \App\Http\Controllers\Tweet\Update\PutController::class
 )->name('tweet.update.put')->where('tweetId','[0-9]+');
 //tweet削除
-Route::delete('/tweet/delete', \App\Http\Controllers\Tweet\DeleteController::class
-)->name('tweet.delete');
+Route::delete('/tweet/delete/{tweetId}', \App\Http\Controllers\Tweet\DeleteController::class
+)->name('tweet.delete')->where('tweetId','[0-9]+');
 //good機能
 Route::get('/tweet/good/{tweetId}', \App\Http\Controllers\Tweet\GoodController::class
 )->name('tweet.good')->where('tweetId','[0-9]+');

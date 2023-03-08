@@ -45,8 +45,11 @@
     <div>
         @foreach($tweets as $tweet)
         <details>
-            <summary><?php echo $tweet['content']?>  by  echo $tweet['updated_at'] ?>最終投稿日時 <?php echo $tweet['updated_at']?>
-                いいね数
+            <summary>{{ $tweet['content'] }}  by {{$tweet['user_name']}} 投稿日時 <?php echo $tweet['created_at']?>
+                @foreach($tweet['Images'] as $image) {{ $image->name }}
+                <div><img src="storage/images/{{ $image->name }}" width="50" height="50"></div>
+                @endforeach
+                いいね数<?php echo $tweet['good']?>
                     <form action="{{ route('tweet.good',['tweetId' => $tweet['tweet_id']] )}}" method="GET">
                         @csrf
                         <input type="submit" value="GOOD!">
@@ -55,12 +58,11 @@
                         @csrf
                         <input type="submit" value="BAD!">
                     </form>
-                    <img src="storage/images/" width="30" height="30">
             </summary>
-            @if(\Illuminate\Support\Facades\Auth::id() === $tweet->user_id)
+            @if(\Illuminate\Support\Facades\Auth::id() === $tweet['user_id'])
             <div>
-                <a href="{{ route('tweet.update.index',['tweetId' => $tweet->id]) }}">編集</a>
-                <form action="{{ route('tweet.delete',['tweetId' => $tweet->id]) }}" method="post">
+                <a href="{{ route('tweet.update.index',['tweetId' => $tweet['tweet_id'] ]) }}">編集</a>
+                <form action="{{ route('tweet.delete',['tweetId' => $tweet['tweet_id'] ]) }}" method="post">
                             @method('DELETE')
                             @csrf
                             <button type="submit">削除</button>

@@ -23,6 +23,12 @@ class IndexController extends Controller
         throw new AccessDeniedHttpException();
     }
       $tweet = Tweet::where('id',$tweetId)->firstOrFail();
-      //return view('tweet.update')->with('tweet',$tweet);
+      return view('tweet.update')->with('tweet',$tweet);
     }
 }
+
+
+
+
+
+?>

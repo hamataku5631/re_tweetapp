@@ -32,7 +32,7 @@ class CreateController extends Controller
         
         $image_id = Image::insertGetId(
             [
-                'name' => $request->images()//投稿されたfileのオリジナル名を格納
+                'name' => $request->images()?? 'no_image'//投稿されたfileのオリジナル名を格納
             ]
         );
 

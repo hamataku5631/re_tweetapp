@@ -40,8 +40,9 @@ class CreateRequest extends FormRequest
     }
     
     public function images()
-    {   
+    {   if ($this->hasFile('images')) {
         return $this->file('images')->getClientOriginalName();
+    }return null;
     }
 
 }
